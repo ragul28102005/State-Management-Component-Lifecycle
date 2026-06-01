@@ -1,0 +1,46 @@
+// Todo App in Plain JavaScript
+
+let todos = [];
+
+function addTodo(text) {
+    if (!text.trim()) {
+        console.log("Task cannot be empty");
+        return;
+    }
+
+    const newTodo = {
+        id: Date.now(),
+        text: text.trim()
+    };
+
+    todos.push(newTodo);
+    console.log("Added:", newTodo.text);
+}
+
+function deleteTodo(id) {
+    todos = todos.filter(todo => todo.id !== id);
+    console.log("Todo deleted");
+}
+
+function displayTodos() {
+    console.log("\nTodo List:");
+    
+    if (todos.length === 0) {
+        console.log("No tasks available");
+        return;
+    }
+
+    todos.forEach((todo, index) => {
+        console.log(`${index + 1}. ${todo.text}`);
+    });
+}
+
+// Example Usage
+addTodo("Learn React");
+addTodo("Build Todo App");
+
+displayTodos();
+
+deleteTodo(todos[0].id);
+
+displayTodos();
